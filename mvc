@@ -11,6 +11,7 @@ As with other software patterns, MVC expresses the "core of the solution" to a p
 for each system. Particular MVC architectures can vary significantly from the traditional description here.
 
 Components
+
 A typical collaboration of the MVC components.
 
 The central component of MVC, the model, captures the behavior of the application in terms of its problem domain, 
@@ -40,9 +41,12 @@ interactions between them.
     
 History
 
-MVC was one of the seminal insights in the early development of graphical user interfaces, and one of the first approaches to describe and implement software constructs in terms of their responsibilities.[8]
+MVC was one of the seminal insights in the early development of graphical user interfaces, and one of the first approaches to 
+describe and implement software constructs in terms of their responsibilities.
 
-Trygve Reenskaug introduced MVC into Smalltalk-76 while visiting the Xerox Palo Alto Research Center (PARC)[9][10] in the 1970s. In the 1980s, Jim Althoff and others implemented a version of MVC for the Smalltalk-80 class library. It was only later, in a 1988 article in The Journal of Object Technology (JOT), that MVC was expressed as a general concept.[11]
+Trygve Reenskaug introduced MVC into Smalltalk-76 while visiting the Xerox Palo Alto Research Center (PARC) in the 1970s. 
+In the 1980s, Jim Althoff and others implemented a version of MVC for the Smalltalk-80 class library. It was only later, in a
+1988 article in The Journal of Object Technology (JOT), that MVC was expressed as a general concept.
 
 The MVC pattern has subsequently evolved,[12] giving rise to variants such as hierarchical model–view–controller (HMVC), model–view–adapter (MVA), model–view–presenter (MVP), model–view–viewmodel (MVVM), and others that adapted MVC to different contexts.
 
