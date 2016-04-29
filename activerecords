@@ -154,3 +154,166 @@ Connection to multiple databases in different models
 Connections are usually created through ActiveRecord::Base.establish_connection and retrieved by ActiveRecord::Base.connection. All classes inheriting from ActiveRecord::Base will use this connection. But you can also set a class-specific connection. For example, if Course is an ActiveRecord::Base, but resides in a different database, you can just say Course.establish_connection and Course and all of its subclasses will use this connection instead.
 
 This feature is implemented by keeping a connection pool in ActiveRecord::Base that is a Hash indexed by the class. If a connection is requested, the retrieve_connection method will go up the class-hierarchy until a connection is found in the connection pool.
+
+
+
+
+
+Active Record – Object-relational mapping in Rails
+
+Active Record connects classes to relational database tables to establish an almost zero-configuration persistence layer for applications. The library provides a base class that, when subclassed, sets up a mapping between the new class and an existing table in the database. In the context of an application, these classes are commonly referred to as models. Models can also be connected to other models; this is done by defining associations.
+
+Active Record relies heavily on naming in that it uses class and association names to establish mappings between respective database tables and foreign key columns. Although these mappings can be defined explicitly, it's recommended to follow naming conventions, especially when getting started with the library.
+
+A short rundown of some of the major features:
+
+    Automated mapping between classes and tables, attributes and columns.
+
+    class Product < ActiveRecord::Base
+    end
+
+    Learn more
+
+The Product class is automatically mapped to the table named “products”, which might look like this:
+
+CREATE TABLE products (
+  id int(11) NOT NULL auto_increment,
+  name varchar(255),
+  PRIMARY KEY  (id)
+);
+
+This would also define the following accessors: `Product#name` and `Product#name=(new_name)`.
+
+    Associations between objects defined by simple class methods.
+
+    class Firm < ActiveRecord::Base
+      has_many   :clients
+      has_one    :account
+      belongs_to :conglomerate
+    end
+
+    Learn more
+
+    Aggregations of value objects.
+
+    class Account < ActiveRecord::Base
+      composed_of :balance, class_name: 'Money',
+                  mapping: %w(balance amount)
+      composed_of :address,
+                  mapping: [%w(address_street street), %w(address_city city)]
+    end
+
+    Learn more
+
+    Validation rules that can differ for new or existing objects.
+
+    class Account < ActiveRecord::Base
+      validates :subdomain, :name, :email_address, :password, presence: true
+      validates :subdomain, uniqueness: true
+      validates :terms_of_service, acceptance: true, on: :create
+      validates :password, :email_address, confirmation: true, on: :create
+    end
+
+    Learn more
+
+    Callbacks available for the entire life cycle (instantiation, saving, destroying, validating, etc.).
+
+    class Person < ActiveRecord::Base
+      before_destroy :invalidate_payment_plan
+      # the `invalidate_payment_plan` method gets called just before Person#destroy
+    end
+
+    Learn more
+
+    Inheritance hierarchies.
+
+    class Company < ActiveRecord::Base; end
+    class Firm < Company; end
+    class Client < Company; end
+    class PriorityClient < Client; end
+
+    Learn more
+
+    Transactions.
+
+    # Database transaction
+    Account.transaction do
+      david.withdrawal(100)
+      mary.deposit(100)
+    end
+
+    Learn more
+
+    Reflections on columns, associations, and aggregations.
+
+    reflection = Firm.reflect_on_association(:clients)
+    reflection.klass # => Client (class)
+    Firm.columns # Returns an array of column descriptors for the firms table
+
+    Learn more
+
+    Database abstraction through simple adapters.
+
+    # connect to SQLite3
+    ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'dbfile.sqlite3')
+
+    # connect to MySQL with authentication
+    ActiveRecord::Base.establish_connection(
+      adapter:  'mysql2',
+      host:     'localhost',
+      username: 'me',
+      password: 'secret',
+      database: 'activerecord'
+    )
+
+    Learn more and read about the built-in support for MySQL, PostgreSQL, and SQLite3.
+
+    Logging support for Log4r and Logger.
+
+    ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)
+    ActiveRecord::Base.logger = Log4r::Logger.new('Application Log')
+
+    Database agnostic schema management with Migrations.
+
+    class AddSystemSettings < ActiveRecord::Migration
+      def up
+        create_table :system_settings do |t|
+          t.string  :name
+          t.string  :label
+          t.text    :value
+          t.string  :type
+          t.integer :position
+        end
+
+        SystemSetting.create name: 'notice', label: 'Use notice?', value: 1
+      end
+
+      def down
+        drop_table :system_settings
+      end
+    end
+
+    Learn more
+
+Philosophy
+
+Active Record is an implementation of the object-relational mapping (ORM) pattern by the same name described by Martin Fowler:
+
+"An object that wraps a row in a database table or view,
+encapsulates the database access, and adds domain logic on that data."
+
+Active Record attempts to provide a coherent wrapper as a solution for the inconvenience that is object-relational mapping. The prime directive for this mapping has been to minimize the amount of code needed to build a real-world domain model. This is made possible by relying on a number of conventions that make it easy for Active Record to infer complex relations and structures from a minimal amount of explicit direction.
+
+Convention over Configuration:
+
+    No XML files!
+
+    Lots of reflection and run-time extension
+
+    Magic is not inherently a bad word
+
+Admit the Database:
+
+    Lets you drop down to SQL for odd cases and performance
+
+    Doesn't attempt to duplicate or replace data definitions
