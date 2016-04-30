@@ -1,11 +1,15 @@
 Active Record
 
-Active Record objects don't specify their attributes directly, but rather infer them from the table definition with which they're linked. Adding, removing, and changing attributes and their type is done directly in the database. Any change is instantly reflected in the Active Record objects. The mapping that binds a given Active Record class to a certain database table will happen automatically in most common cases, but can be overwritten for the uncommon ones.
+Active Record objects don't specify their attributes directly, but rather infer them from the table definition with which 
+they're linked. Adding, removing, and changing attributes and their type is done directly in the database. Any change is instantly
+reflected in the Active Record objects. The mapping that binds a given Active Record class to a certain database table will happen 
+automatically in most common cases, but can be overwritten for the uncommon ones.
 
 See the mapping rules in table_name and the full example in files/activerecord/README_rdoc.html for more insight.
 Creation
 
-Active Records accept constructor parameters either in a hash or as a block. The hash method is especially useful when you're receiving the data from somewhere else, like an HTTP request. It works like this:
+Active Records accept constructor parameters either in a hash or as a block. The hash method is especially useful when you're
+receiving the data from somewhere else, like an HTTP request. It works like this:
 
 user = User.new(name: "David", occupation: "Code Artist")
 user.name # => "David"
