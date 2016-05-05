@@ -18,7 +18,14 @@ log/ Application log files.
 
 public/ The only folder seen by the world as-in. Contain static files and compiled assets.
 
-rakefile 
+rakefile This files locates and load tasks that can be run from the command line the task definitions and defined throughout the 
+components of Rails. Rather then changing Rakefile you should add your own tasks by adding files to the bin/tasks directory of your 
+application.
+
+README.rdoc This is a brief introduction manual for your application. You should edit this file to tell others what your application
+does, how to set it up, and so on.
+
+
 
 
 
