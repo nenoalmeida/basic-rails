@@ -3,5 +3,22 @@ app/ Contais the controllers, models, views, helpers, mailers, and assets for yo
 
 bin/ Contains the Rails scriptthat starts your apps and can contain other scripts you use to setup or run your application
 
+config/ configure your application routes, database, and more. 
+
+config.ru/Rack configuration for Rack based servers used to start the application.
+
+db/ Contains your current database schema, as well as the database migrations
+
+Gemfile and Gemfile.lock These files alow you to specify what gem dependencies are needed for your rails application. This files are 
+used by Bundler gem. 
+
+lib/ Extended modules for your application.
+
+log/ Application log files.
+
+public/ The only folder seen by the world as-in. Contain static files and compiled assets.
+
+rakefile 
+
 
 
