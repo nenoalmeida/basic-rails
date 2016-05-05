@@ -25,6 +25,10 @@ application.
 README.rdoc This is a brief introduction manual for your application. You should edit this file to tell others what your application
 does, how to set it up, and so on.
 
+tests/ Unit tests, fixures, and other tests apparatus. 
+
+vendor/ A place for all third-party code. In a typical Rails application this includes vendered gems.
+
 
 
 
