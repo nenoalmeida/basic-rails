@@ -1,1 +1,3 @@
 
+app/ Contais the controllers, models, views, helpers, mailers, and assets for your application. You'll focus on this folder.
+
