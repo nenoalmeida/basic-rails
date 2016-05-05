@@ -1,3 +1,7 @@
 
 app/ Contais the controllers, models, views, helpers, mailers, and assets for your application. You'll focus on this folder.
 
+bin/ Contains the Rails scriptthat starts your apps and can contain other scripts you use to setup or run your application
+
+
+
