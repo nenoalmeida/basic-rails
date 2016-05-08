@@ -1,1 +1,5 @@
 
+ActiveModel hooks into features of your models that aren't really about the database - for instance, if you want a URL for 
+a given model, ActiveModel helps you there. It's a thin wrapper around many different ActiveModel implementations to tell 
+Rails how to use them. Most commonly, ActiveModel implementations are ORMs (see ActiveRecord, below), but they can 
+also use non-relational storage like MongoDB, Redis, Memcached or even just local machine memory.
