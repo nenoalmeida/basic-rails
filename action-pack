@@ -1,1 +1,6 @@
 
+ActionPack does routing - the mapping of an incoming URL to a controller and action in Rails. It also sets up your controllers
+and views, and shepherds a request through its controller action and then through rendering the view. For some of it, 
+ActionPack uses Rack. The template rendering itself is done through an external gem like Erubis for .erb templates, or Haml 
+for .haml templates. ActionPack also handles action- or view-centered functionality like view caching.
+
