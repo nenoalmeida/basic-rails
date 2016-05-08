@@ -1,0 +1,6 @@
+
+
+ActiveSupport is a compatibility library including methods that aren't necessarily specific to Rails. You'll see ActiveSupport 
+used by non-Rails libraries because it contains such a lot of useful baseline functionality. ActiveSupport includes methods 
+like how Rails changes words from single to plural, or CamelCase to snake_case. It also includes significantly better
+time and date support than the Ruby standard library.
