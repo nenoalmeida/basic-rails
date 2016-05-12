@@ -8,3 +8,7 @@ Active Records
 
 Routing
 
+Action Pack
+
+Action Mailer
+
