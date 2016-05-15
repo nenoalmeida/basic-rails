@@ -2,15 +2,14 @@
 
 Some basic things about the framework Rails
 
-Model View Controller
+* Model View Controller
 
-Active Records
+* Active Records
 
-Routing
+* Routing
 
-Action Pack
+* Action Pack
 
-Action Mailer
+* Action Mailer
 
-Files
-
+* Files
