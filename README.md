@@ -1,6 +1,6 @@
 # basic-rails
 
-Some basic things about the framework Rails
+Some basic tips about the Ruby on Rails
 
 * Model View Controller
 
