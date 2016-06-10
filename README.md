@@ -1,4 +1,4 @@
-# basic-rails
+# Basic Rails
 
 Some basic tips about the Ruby on Rails
 
